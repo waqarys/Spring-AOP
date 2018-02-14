@@ -59,3 +59,26 @@ Aspect = Pointcut			+  		Advice
 		(Where the 					(What code
 		Aspect is applied)			is executed)
 		
+		
+# JoinPoint
+- Point in the control flow of a program
+- Advices can be presented with information about the join point
+- e.g., method name, class name etc
+
+# Enable Aspects in Spring XML Configuration
+```
+<beans>
+	
+	<aop:aspectj-autoproxy/>
+	<context:component-scan base-package="simpleaspect" />
+</beans>
+
+
+@Configuration
+@EnableAspectJAutoProxy
+@ComponentScan(basePackages ="com.waqar")
+public class SimpleAspectConfiguration {
+
+}
+
+```
