@@ -82,3 +82,8 @@ public class SimpleAspectConfiguration {
 }
 
 ```
+
+# Before Advice
+- Executed before the method
+- Exception prevents method to be executed 
+- If before advice method throws exception, exception is propagated to the caller

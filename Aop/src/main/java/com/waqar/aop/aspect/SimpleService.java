@@ -8,4 +8,8 @@ public class SimpleService {
 	public void doSomething() {
 		
 	}
+
+	public String returnsString() {
+		return "test";
+	}
 }
