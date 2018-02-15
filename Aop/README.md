@@ -87,3 +87,8 @@ public class SimpleAspectConfiguration {
 - Executed before the method
 - Exception prevents method to be executed 
 - If before advice method throws exception, exception is propagated to the caller
+
+# After Advice
+- Executed after the method is executed
+- Exception could have been thrown ...
+- ... or method could have been executed successfully

@@ -12,4 +12,8 @@ public class SimpleService {
 	public String returnsString() {
 		return "test";
 	}
+
+	public void throwsRuntimeException() {
+		throw new RuntimeException("Exception thrown");
+	}
 }

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class BeforeAdvice {
 
-	Logger logger = LoggerFactory.getLogger(TracingAspect.class);
+	Logger logger = LoggerFactory.getLogger(BeforeAdvice.class);
 	private boolean beforeCalled = false;
 	
 	public void reset(){
