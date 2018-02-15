@@ -116,3 +116,36 @@ public void logResult(String string){
 	logger.trace("result "+string);
 }
 ```
+
+# Around Advice
+- Wraps around the method
+- Can prevent the original method from being called
+- ... without throwing an exception like the before advice
+- Only advice that can catch exceptions
+- Only advice that can modify return values
+- Current method call is passed to the Advice
+- ProceedingJoinPoint
+- Can be executed or skipped
+```
+@Around(
+	"execution(* *(..))"
+)
+public Object trace(ProceedingJoinPoint proceedingJP) throws Throwable {
+
+	String methodInformation = 
+		proceedingJP.getStaticPart().getSignature().toString();
+	logger.trace("Entering "+methodInformation);
+	try{
+		return proceedingJP.proceed();
+	} catch(Throwable ex){
+		logger.error("Exception in "+methodInformation, ex);
+		throw ex;
+	} finally {
+		logger.trace("Exiting "+methodInformation);
+	}
+}
+```
+
+- Most powerful advice
+- i.e., can be used instead of Before and After
+- Around is powerful but also complex
