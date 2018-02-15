@@ -92,3 +92,16 @@ public class SimpleAspectConfiguration {
 - Executed after the method is executed
 - Exception could have been thrown ...
 - ... or method could have been executed successfully
+
+# After Throwing
+- Executed if method threw an exception
+- Exception will be propagated to the caller
+- Thrown exception can be accessed
+- Type safe i.e. method only execute if a RuntimeException is thrown
+e.g.,
+```
+@AfterThrowing(pointcut = "execution(* *(..))", throwing="ex")
+public void logException(RuntimeException ex) {
+	logger.error("Exception ", ex);
+}
+```
