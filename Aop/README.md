@@ -105,3 +105,14 @@ public void logException(RuntimeException ex) {
 	logger.error("Exception ", ex);
 }
 ```
+
+# After Returning
+- Executed if the method returned successfully
+- Can access the result
+```
+@AfterReturning(pointcut = "execution(* *(..))", 
+returning = "string")
+public void logResult(String string){
+	logger.trace("result "+string);
+}
+```
