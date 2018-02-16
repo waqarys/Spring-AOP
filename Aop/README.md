@@ -224,3 +224,54 @@ public void trace(ProceedingJoinPoint proceeding JP) throws Throwable{
 	
 }
 ```
+
+# Architecture Problems
+- For each call to a service
+	- Call must be traced
+	- Exceptions must be logged
+- For each call to a repository
+	- Call must be traced
+	- Performance must be traced
+	- Exceptions must be logged
+- Specific behaviour should be added
+	- Tracing, exception handling etc
+- to specific parts of the architecture
+	- Repositories, services etc
+	
+# Pointcuts Using Annotations
+** Step 1: Define architecture as Pointcuts **
+```
+public class SystemArchitecture {
+
+	//Any class annotated with @Repository
+	@Pointcut(
+		"execution(* (@org.springframework.stereotype.Repository *).*(..))"
+	)
+	public void Repository() {}
+	
+	//Any class annotated with @Service
+	@Pointcut(
+		"execution(* (@org.springframework.stereotype.Service *).*(..))"
+	)
+	public void Service() {}
+	
+}
+```
+
+** Step 2: Define behavior using Advices **
+e.g., Exceptions must be logged
+```
+	@Component
+	@Aspect
+	public class ExceptionLoggingAspect {
+		Logger logger = LoggerFactory.getLogger(ExceptionLoggingAspect.class);
+		
+		@AfterThrowing(pointcut = "SystemArchitecture.Repository() || SystemArchitecture.Service()",
+		throwing="ex")
+		public void logException(Exception ex) {
+			logger.error("Exception", ex);
+		}
+	}
+```
+
+** Step 3: Add Advices to correct Pointcuts Services and Repositories **
