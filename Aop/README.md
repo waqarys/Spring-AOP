@@ -194,3 +194,33 @@ public Object trace(ProceedingJoinPoint proceedingJP) throws Throwable {
 - Method must be annotated, NOTE: fully qualified class name of the Annotation
 - `execution(* (@com.waqar.Annotation *).*(..))`
 - Class must be Annotated
+
+# Spring Bean Names as Pointcuts
+- e.g., `bean(*Service)`
+- Method in SPringBeam, Bean name ends in ...Service
+- Bean name default: class name (small caps)
+- Java Config : @Bean method name
+- Annotation : parameter to @Component, @Service, @Respository
+- XML : name/id attribute of bean element
+
+# Pointcuts and Boolean Operators
+- Pointcuts can be combined using boolean operators
+- i.e. || , && , !
+-e.g., `execution(* service.*.*(..)) || execution(* repository.*.*(..))`
+
+# @Pointcut
+- Problem : Pointcut expression repeated every time a pointcut is used
+- How can they be reused?
+```
+public class MyPointcuts{
+	@Pointcut("execution(@annotation.Trace * *(..))")
+	public void traceAnnotated() {
+	
+	}
+}
+
+@Around("MyPointcuts.traceAnnotated()")
+public void trace(ProceedingJoinPoint proceeding JP) throws Throwable{
+	
+}
+```
