@@ -10,7 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.waqar.aop.aspect.AfterReturningAdvice;
-import com.waqar.aop.aspect.SimpleService;
+import com.waqar.aop.service.SimpleService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/simpleaspect.xml")

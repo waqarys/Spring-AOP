@@ -149,3 +149,42 @@ public Object trace(ProceedingJoinPoint proceedingJP) throws Throwable {
 - Most powerful advice
 - i.e., can be used instead of Before and After
 - Around is powerful but also complex
+
+# Pointcuts
+- How can you add advices to specific parts of the system?
+- Pointcut language = "SQL for code"
+
+# Pointcuts:Wildcards
+- e.g., `execution(* hello())`
+- Execution of method hello, no parameters, any return type
+- e.g., `execution(* hello(int, int))`
+- Execution of method hello, two ints as parameters, any return type
+
+# Pointcuts:Parameter Wildcards
+- e.g., `execution(* hello(*))`
+- Execution of method hello, one parameter of any type, any return type
+- e.g., `execution(* hello(..))`
+- Execution of method hello, any number of parameters of any type, any return type
+
+# Pointcuts:Packages and Classes
+- e.g., `execution(int com.waqar.Service.hello(int))`
+- Execution of method hello, in class Service, in package com.waqar, one ints as parameters, int return type
+
+- e.g., `execution(* com.waqar..*Service.*(..))`
+- Execution of any method,
+	class name ends in Service,
+	in package com.waqar or subpackage,
+	any parameters,
+	any return type
+
+- e.g., `execution(* *.*(..))`
+- Execution of any method,
+	Any parameters,
+	in any class,
+	in the default package
+	
+- e.g., `execution(* *..*.*(..))`
+- Execution of any method,
+	Any parameters,
+	in any class,
+	in any package or subpackage

@@ -1,9 +1,9 @@
-package com.waqar.aop.aspect;
+package com.waqar.aop.repository;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
-@Service
-public class SimpleService {
+@Repository
+public class SimpleRepository {
 
 	public void doSomething() {
 		
