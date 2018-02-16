@@ -188,3 +188,9 @@ public Object trace(ProceedingJoinPoint proceedingJP) throws Throwable {
 	Any parameters,
 	in any class,
 	in any package or subpackage
+	
+# Pointcuts:Annotations
+- `execution(@com.waqar.Annotation * *(..))`
+- Method must be annotated, NOTE: fully qualified class name of the Annotation
+- `execution(* (@com.waqar.Annotation *).*(..))`
+- Class must be Annotated

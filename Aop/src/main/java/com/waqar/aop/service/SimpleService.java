@@ -2,6 +2,8 @@ package com.waqar.aop.service;
 
 import org.springframework.stereotype.Service;
 
+import com.waqar.annotation.Trace;
+
 @Service
 public class SimpleService {
 
@@ -23,5 +25,10 @@ public class SimpleService {
 
 	public String returnsStringAndThrowsRuntimeException() {
 		throw new RuntimeException("New runtime exception thrown");
+	}
+	
+	@Trace
+	public void annotated(){
+		
 	}
 }
