@@ -275,3 +275,20 @@ e.g., Exceptions must be logged
 ```
 
 ** Step 3: Add Advices to correct Pointcuts Services and Repositories **
+
+# Pointcuts Using Package Names
+```
+public class SystemArchitecturePackage{
+	//Any class in a subpackage repository of com.waqar
+	@Pointcut("execution(* com.waqar..repository.*.*(..))")
+	public void Repository() {
+	
+	}
+	
+	//Any class in a subpackage service of com.waqar
+	@Pointcut("execution(* com.waqar..service.*.*(..))")
+	public void Service(){
+	
+	}
+}
+```
