@@ -292,3 +292,25 @@ public class SystemArchitecturePackage{
 	}
 }
 ```
+
+# Configure Spring's Dependency Container
+```
+<!-- use-default-filters="false" ==> 
+	@Component
+	@Service
+	@Repository won't work -->
+<!-- <context:include-filter type="aspectj"
+		expression="com.waqar.aop..service.*" /> ==>
+		Implies any class in package service in the subpackage of com.waqar
+		automatically becomes a spring bean -->
+
+<context:component-scan base-package="com.waqar"
+	use-default-filters="false">
+	<context:include-filter type="aspectj"
+		expression="com.waqar.aop.repository.*" />
+	<context:include-filter type="aspectj"
+		expression="com.waqar.aop.service.*" />
+	<context:include-filter type="annotation"
+		expression="org.aspectj.lang.annotation.Aspect" />
+</context:component-scan>
+```

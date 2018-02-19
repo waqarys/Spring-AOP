@@ -8,8 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
 
-import com.waqar.aop.pointcut.CallTracker;
-
 @Component
 @Aspect
 public class PerformanceAspect extends CallTracker {

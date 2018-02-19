@@ -7,8 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import com.waqar.aop.pointcut.CallTracker;
-
 @Component
 @Aspect
 public class TracingAspect1 extends CallTracker {
